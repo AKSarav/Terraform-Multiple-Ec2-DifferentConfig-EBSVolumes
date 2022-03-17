@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Copying the SSH Key to the remote server"
+echo -e "#Jenkins\nssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCiqkJurGBUQJqqeESSh8QdXeViVF/SNZPMT4Qm/RVgBbIhG8VsoDhGM0tgIzWyTaNxDPSDx/yzJ8FQwCKOH6YR3RugLvTU+jDKvI8BWOnMM5cgrbfKbBssUyJSdWI86py4bi05A3X6O5+6xS6IvQbZwlbJiu/DbgAcvGLiq1mDi77O+DvU22RNgCB9hGddryWc3nTDOMyVaex5EdfvgxEli1DAM2YYr/DdxVvdzkrP/1fol6t+XT4FeQyW/KcQuRA53qG0adZ8aqwIlz5vHOTqJ0bt2UZI7AYwo/rTBimlqWzHfU/uErKyjUWAWjt54znBEB/jSYlSN/6NUO3OGuLn jenkins@ip-172-31-3-32\nssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4rw4MohtsoXcVWPd2+3hjH0MKNVKePBddqlRXLPlhbcDQ06FO8euMxVvsglV4gqhD0v1l8h+bk/X+eJWqQuLrv2MBUMnh954LfLsLyqWMHZ0CXzsywTe+32zdu9JydbwiQiMIlDwFy0nsyX+quzLupYejrAtFFOKoFSzNB3ng69KSV+M6kUZdXHfP9PjYt5wZfOW0h/W9+2Oz406UjpeaW5t9XPftx784nLsocR3d7mosIgLMXkFLijOfJknhEKWxMmvkwV15fcuPfpRhvJkFDCmpFMBTaOwE2rDuj22r0Z4bI78CdtZgTSB5eK1YebOtEUllB+pwoMA40cNgnivd ubuntu@ci.getsigneasy.com" >> /home/ubuntu/.ssh/authorized_keys
+
+echo "Changing the hostname to ${each.value.instance_name}"
+hostname ${each.value.instance_name}
+echo "${each.value.instance_name}" > /etc/hostname
