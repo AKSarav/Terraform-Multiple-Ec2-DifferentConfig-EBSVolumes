@@ -13,14 +13,7 @@ locals {
         subnet_id   = srv.subnet_id
         ami = srv.ami
         rootdisk = srv.root_block_device
-        blockdisks = [
-          for block in srv.ebs_block_devices : {
-            device_name = block.device_name
-            volume_type = block.volume_type
-            volume_size = block.volume_size
-            tags = block.tags
-          }   
-        ]
+        blockdisks = srv.ebs_block_devices
         securitygroupids = srv.vpc_security_group_ids
       }
     ]
